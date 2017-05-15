@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Initial Invocation &mdash; PCMCam 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PCMCam 0.9 documentation" href="index.html" />
+    <link rel="prev" title="Installation Steps" href="install.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installation Steps"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PCMCam 0.9 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Initial Invocation</a><ul>
+<li><a class="reference internal" href="#preparing-the-quick-launch-shortcut">Preparing the Quick Launch Shortcut</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">Installation Steps</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/initial.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="initial-invocation">
+<h1>Initial Invocation<a class="headerlink" href="#initial-invocation" title="Permalink to this headline">¶</a></h1>
+<p>Initial invocation is by the command line.  From the windows command prompt type:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>python PCMCam.py &lt;n&gt;
+</pre></div>
+</div>
+<p>where &lt;n&gt; is replaced by a single-digit as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">n</th>
+<th class="head">Camera</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>Thorlabs/IDS DCx camera</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>webcam</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>pseudo-camera (noise)</td>
+</tr>
+</tbody>
+</table>
+<p>The first time PCMCam is run on a computer (or by a user of a computer) it simply prepares some
+files and directories <a class="footnote-reference" href="#id2" id="id1">[1]</a> and then exits.  In the table below, the tilde (<code class="docutils literal"><span class="pre">~</span></code>) is expanded as the
+Windows user home diretory, usually e.g., <code class="docutils literal"><span class="pre">C:\Users\joeavg</span></code>, for a user named <code class="docutils literal"><span class="pre">joeavg</span></code>.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Note that the folders are not actually created until they are needed so the first invocation
+really only creates the <code class="docutils literal"><span class="pre">~\PCMCam</span></code> folder.</td></tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Folder</th>
+<th class="head">Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">~\PCMCam</span></code></td>
+<td>user/program home directory.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">~\PCMCam\FFC</span></code></td>
+<td>folder of flat-field-calibration files</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">~\PCMCam\caps</span></code></td>
+<td>folder for storing captured images</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">File</th>
+<th class="head">Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">PCMCam.ini</span></code></td>
+<td>initialization file - you can edit this</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">PCMCam.bat</span></code></td>
+<td>batch file - can be used to invoke the program</td>
+</tr>
+</tbody>
+</table>
+<p>Folder locations, along with a number of other program options, can be controlled by overriding the default
+definitions in PCMCam.ini.  That&#8217;s the reason for having
+a special invocation - you can run the program, edit the files, then subsequent runs make use of the modified files.</p>
+<p>The camera number, <code class="docutils literal"><span class="pre">n</span></code>, as entered on the initial invocation command is written to the batch file so that
+subsequent invocation using the batch file cause the same camera to be selected.</p>
+<p>The initial invocation is performed when the program does not see an initialization file.  So, to reset the system
+cause a new set of files and folders to be created, simply delete (or rename) the file <code class="docutils literal"><span class="pre">PCMCam.ini</span></code>.</p>
+<div class="section" id="preparing-the-quick-launch-shortcut">
+<h2>Preparing the Quick Launch Shortcut<a class="headerlink" href="#preparing-the-quick-launch-shortcut" title="Permalink to this headline">¶</a></h2>
+<p>In the media subdirectory of the package directory (currently <code class="docutils literal"><span class="pre">...\PCMCamV09\media</span></code>), there is an
+icon file that can be installed in a windows shortcut to the <code class="docutils literal"><span class="pre">.bat</span></code> file to create an object that can be launched
+by windows.  To do this, follow these steps:</p>
+<ol class="arabic">
+<li><p class="first">Use Windows Explorer to locate the <code class="docutils literal"><span class="pre">.bat</span></code> file that was created by the initial program invocation.</p>
+</li>
+<li><p class="first">Right click and select <em>Create shortcut</em>.</p>
+<blockquote>
+<div><p><img alt="shortcut_to_bat" src="_images/Shortcut_To_Bat.png" /></p>
+</div></blockquote>
+</li>
+<li><p class="first">Rename the shortcut, <code class="docutils literal"><span class="pre">PCMCam.bat</span> <span class="pre">-</span> <span class="pre">Shortcut</span></code> as <code class="docutils literal"><span class="pre">PCMCam.lnk</span></code>.</p>
+</li>
+<li><p class="first">Select it, right-click, select <em>Properties</em> then press the <em>Change Icon...</em> button.</p>
+<blockquote>
+<div><p><img alt="change_icon" src="_images/change_icon.png" /></p>
+</div></blockquote>
+</li>
+<li><p class="first">There will be a warning to say that the file does not contain an icon, just agree to that and then proceed to
+the next dialog and press <em>Browse...</em></p>
+<p><img alt="icon_browse" src="_images/icon_browse.png" /></p>
+</li>
+<li><p class="first">Navigate to the <code class="docutils literal"><span class="pre">media</span></code> subfolder of the package directory and select the <code class="docutils literal"><span class="pre">patch_icon.ico</span></code> file.</p>
+</li>
+<li><p class="first">Now the file <code class="docutils literal"><span class="pre">PCMCam.lnk</span></code> can be moved or copied to the desktop as a quick launch button.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installation Steps"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PCMCam 0.9 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Matthew Palmer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

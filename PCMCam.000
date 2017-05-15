@@ -1,0 +1,14 @@
+# PCMCam Initialization file template
+# When program is run first time (no .ini file exists), ${ProgramName}.ini is created from this template
+[Paths]
+CaptureDir = ${UserHome}\${ProgramName}\caps     # place to store auto-captured images
+FlatFieldCalDir = ${UserHome}\${ProgramName}\FFC
+ImageDir = ${UserHome}\${ProgramName}\images
+
+[Options]
+CaptureAutoSave = True
+SoundOnCapture = True
+ExpInit1 = 50
+ExpInit2 = 1000
+CalAutoLoad = True
+CalAutoSave = True

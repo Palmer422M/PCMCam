@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuration Options &mdash; PCMCam 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PCMCam 0.9 documentation" href="index.html" />
+    <link rel="prev" title="Initial Invocation" href="initial.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="initial.html" title="Initial Invocation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PCMCam 0.9 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="initial.html"
+                        title="previous chapter">Initial Invocation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/configuration.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="configuration-options">
+<h1>Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this headline">¶</a></h1>
+<p>In the table below, <code class="docutils literal"><span class="pre">&lt;h&gt;</span> <span class="pre">=</span> <span class="pre">~\PCMCam</span></code>, where <code class="docutils literal"><span class="pre">~</span></code> is the users&#8217;s home directory, so e.g. <code class="docutils literal"><span class="pre">C:\Users\joeavg</span></code>,
+for a user named <code class="docutils literal"><span class="pre">joeavg</span></code>.</p>
+<p>Configuration options in the <code class="docutils literal"><span class="pre">[DEFAULT]</span></code> section:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="14%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CaptureDir</td>
+<td>&lt;h&gt;\caps</td>
+<td>place to store auto-captured images</td>
+</tr>
+<tr class="row-odd"><td>FlatFieldCalDir</td>
+<td>&lt;h&gt;\FFC</td>
+<td>path to flat-field calibration files</td>
+</tr>
+<tr class="row-even"><td>ImageDir</td>
+<td>&lt;h&gt;\images</td>
+<td>(not implemented)</td>
+</tr>
+</tbody>
+</table>
+<p>Configuration options in the <code class="docutils literal"><span class="pre">[Options]</span></code> section:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="13%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CaptureAutoSave</td>
+<td>True</td>
+<td>When true, captures  also saved to <code class="docutils literal"><span class="pre">CaptureDir</span></code></td>
+</tr>
+<tr class="row-odd"><td>SoundOnCapture</td>
+<td>True</td>
+<td>set to cause a shutter sound to be played on capture</td>
+</tr>
+<tr class="row-even"><td>ExpInit1</td>
+<td>50</td>
+<td>initial exposure setting in ms, group 1.</td>
+</tr>
+<tr class="row-odd"><td>ExpInit2</td>
+<td>1000</td>
+<td>initial exposure setting in ms, group 2.</td>
+</tr>
+<tr class="row-even"><td>CalAutoLoad</td>
+<td>True</td>
+<td>set to cause FFC files to be automatically loaded on program start</td>
+</tr>
+<tr class="row-odd"><td>CalAutoSave</td>
+<td>True</td>
+<td>set to cause FFC files to be automatically saved after cal</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="initial.html" title="Initial Invocation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PCMCam 0.9 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Matthew Palmer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
