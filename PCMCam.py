@@ -5,6 +5,8 @@ Command line script.  Works with Python 3.5, Qt5.
 Created April 2016 by Matthew Palmer.
 Developed from glue code and test in pydcu - bernardokyotoku.  At https://github.com/bernardokyotoku/pydcu
 
+Some updates.
+
 """
 import sys
 import os
