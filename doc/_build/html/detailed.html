@@ -1,20 +1,17 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Detailed Operation &#8212; PCMCam 1.0 documentation</title>
-    
+    <title>Detailed Operation &#8212; PCMCam 1.1 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -29,7 +26,7 @@
     <link rel="next" title="Configuration Options" href="configuration.html" />
     <link rel="prev" title="Initial Invocation" href="initial.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -42,7 +39,7 @@
         <li class="right" >
           <a href="initial.html" title="Initial Invocation"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PCMCam 1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PCMCam 1.1 documentation</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -57,7 +54,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#contrast-brightness">Contrast/Brightness</a></li>
-<li><a class="reference internal" href="#exposure-controls">Exposure Controls</a><ul>
+<li><a class="reference internal" href="#exposure-inter-frame-interval-ifi-controls">Exposure/Inter-Frame Interval (IFI) Controls</a><ul>
 <li><a class="reference internal" href="#relationship-between-exposure-time-and-frame-rate">Relationship Between Exposure Time and Frame Rate</a></li>
 </ul>
 </li>
@@ -124,13 +121,16 @@ frame rate are displayed.  At the top right, the mouse cursor position (x, y) is
 <tr class="row-odd"><td><code class="docutils literal"><span class="pre">C</span></code></td>
 <td>Capture frame and store to the capture palette.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">S</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">R</span></code></td>
+<td>Start or stop recording.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">S</span></code></td>
 <td>Swap role of live and captured screens.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">T</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">T</span></code></td>
 <td>Toggle exposure groups.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">Delete</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Delete</span></code></td>
 <td>Delete activated ROI or arrow.</td>
 </tr>
 </tbody>
@@ -153,7 +153,7 @@ polygon, or any one of the vertices can be moved by dragging from inside that po
 <p><img alt="arrow" src="_images/arrow.png" /></p>
 <p>An arrow is purely graphical.  It has no function.  Draw it by aiming the mouse cursor at the live screen where
 you want the arrow head to appear and then dragging to form the tail.  When you release the mouse button, the arrowhead
-will appear.  To activate an arrow, you must click on th arrow head.  Arrows can&#8217;t be moved.  Delete an arrow by
+will appear.  To activate an arrow, you must click on th arrow head.  Arrows can’t be moved.  Delete an arrow by
 activating it then pressing the delete key.</p>
 </div>
 </div>
@@ -198,13 +198,13 @@ the ROI</td>
 </tbody>
 </table>
 </div>
-<div class="section" id="exposure-controls">
-<h2>Exposure Controls<a class="headerlink" href="#exposure-controls" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exposure-inter-frame-interval-ifi-controls">
+<h2>Exposure/Inter-Frame Interval (IFI) Controls<a class="headerlink" href="#exposure-inter-frame-interval-ifi-controls" title="Permalink to this headline">¶</a></h2>
 <p><img alt="exposure_controls" src="_images/exposure_controls.png" /></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="18%" />
-<col width="82%" />
+<col width="17%" />
+<col width="83%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Control</th>
@@ -213,10 +213,10 @@ the ROI</td>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><img alt="g_bright" src="_images/g_bright.png" /></td>
-<td>select exposure group 1 - Bright/NIR - and exposure time (ms)</td>
+<td>select exposure group 1 - Bright/NIR - exposure time (ms) and IFI (s)</td>
 </tr>
 <tr class="row-odd"><td><img alt="g_fluor" src="_images/g_fluor.png" /></td>
-<td>select exposure group 2 - Fluorescence - and exposure time (ms)</td>
+<td>select exposure group 2 - Fluorescence - exposure time (ms) and IFI (s)</td>
 </tr>
 <tr class="row-even"><td><img alt="b_cal" src="_images/b_cal.png" /></td>
 <td>start flat-field calibration</td>
@@ -224,18 +224,22 @@ the ROI</td>
 </tbody>
 </table>
 <p>One of the two exposure groups is active at a time.  Selecting one deactivates the other. Each exposure group is
-associated with an exposure duration that&#8217;s selected from a drop-down list of possible exposure settings.  The
+associated with an exposure duration that’s selected from a drop-down list of possible exposure settings.  The
 exposure group is also associated with the contrast/brightness settings so when toggling between groups, the
 contrast/brightness will also be retained.</p>
+<p>Inter-frame interval is controlled by the second drop-down in each group.  A non-zero inter-frame interval
+creates a longer gap between frames.  A non-zero inter-frame interval must be selected to activate time-lapse
+recording.</p>
 <p>Flat-field calibration is performed while no illumination is present.  The software will cycle through all the
 selectable exposure settings and record a black image.  This dark-field correction will be subtracted from
 all subsequent live streams.  The dark-field images are also stored (if enabled) to a folder and loaded (if
 enabled) when the program starts up.</p>
 <div class="section" id="relationship-between-exposure-time-and-frame-rate">
 <h3>Relationship Between Exposure Time and Frame Rate<a class="headerlink" href="#relationship-between-exposure-time-and-frame-rate" title="Permalink to this headline">¶</a></h3>
-<p>The camera frame rate cannot be higher than the inverse of the exposure time.  So, for example, if the exposure time
+<p>With the inter-frame interval time set to zero, the frame rate is determined by the software.  The camera
+frame rate cannot be higher than the inverse of the exposure time.  So, for example, if the exposure time
 is 400 ms, the frame rate will be at most 2.5 FPS.  There is also a limit imposed by the software of (currently) 5
-frames per second so reducing the exposure time below 200 ms doesn&#8217;t increase the frame rate.</p>
+frames per second so reducing the exposure time below 200 ms doesn’t increase the frame rate.</p>
 </div>
 </div>
 <div class="section" id="capture-palette">
@@ -252,6 +256,12 @@ frames per second so reducing the exposure time below 200 ms doesn&#8217;t incre
 </tr>
 </thead>
 <tbody valign="top">
+<tr class="row-even"><td>group &lt;hms&gt;</td>
+<td>capture palette tag name derived from the creation time</td>
+</tr>
+<tr class="row-odd"><td><img alt="b_reset" src="_images/b_reset.png" /></td>
+<td>reset palette by clearing images and creating a new group tag</td>
+</tr>
 <tr class="row-even"><td>slider</td>
 <td>page through stack of captured frames</td>
 </tr>
@@ -261,14 +271,17 @@ frames per second so reducing the exposure time below 200 ms doesn&#8217;t incre
 <tr class="row-even"><td><img alt="b_swap" src="_images/b_swap.png" /></td>
 <td>swap the roles of the main and capture palette screens</td>
 </tr>
+<tr class="row-odd"><td><img alt="b_record" src="_images/b_record.png" /></td>
+<td>start or stop recording frames to capture palette</td>
+</tr>
 </tbody>
 </table>
 <p>The capture palette keeps track of captured frames.  Add a new frame by pressing the <img alt="b_capture" src="_images/b_capture.png" /> button or <code class="docutils literal"><span class="pre">C</span></code> on
-the keyboard.  You can scroll through the stack (deck) of captured frames using the slider control.</p>
-<p>Captured frames are also saved (if enabled) to image files in a folder.  The format of stored captured frames is
-16-bit gray-scale TIFF.  Files are stored in the capture directory in a folder named for the date and a filename
-consisting of the program invocation time and the capture number.  That capture number corresponds to the capture
-number showing on the heading of the capture palette.</p>
+the keyboard.  Add time-lapse recordings to the palette by pressing the <img alt="b_record" src="_images/b_record.png" /> button or <code class="docutils literal"><span class="pre">R</span></code> on
+the keyboard. Scroll through the stack (deck) of captured frames using the slider control.</p>
+<p>Captured frames are saved to image files in a folder whose name corresponds to the group
+name (i.e. the palette creation time as HHMMSS). Individual frames are named sequentially.
+The format of stored captured frames is 16-bit gray-scale TIFF.</p>
 </div>
 </div>
 
@@ -290,12 +303,12 @@ number showing on the heading of the capture palette.</p>
         <li class="right" >
           <a href="initial.html" title="Initial Invocation"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">PCMCam 1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">PCMCam 1.1 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Matthew Palmer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

@@ -53,7 +53,7 @@ The camera number, ``n``, as entered on the initial invocation command is writte
 subsequent invocation using the batch file cause the same camera to be selected.
 
 The initial invocation is performed when the program does not see an initialization file.  So, to reset the system
-cause a new set of files and folders to be created, simply delete (or rename) the file ``PCMCam.ini``.
+and cause a new set of files and folders to be created, simply delete (or rename) the file ``PCMCam.ini``.
 
 Preparing the Quick Launch Shortcut
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

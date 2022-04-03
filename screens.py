@@ -3,7 +3,7 @@ Classes and functions to support the two screens (live and capture) and associat
 
 M. Palmer, June 2016
 """
-from PyQt5 import QtCore, QtWidgets, QtGui, QtMultimedia
+from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 import numpy as np
 from matplotlib.path import Path
@@ -15,6 +15,11 @@ CAP_SCREEN_TAG = 'capScreen'
 CAP_SCREEN_STYLE_STILL0 = '{ border: 1px solid blue; }'
 CAP_SCREEN_STYLE_STILL = '{ border: 1px solid red; }'
 CAP_SCREEN_STYLE_LIVE = '{ border: 1px solid green; }'
+
+TL_SCREEN_TAG = 'tlScreen'
+TL_SCREEN_STYLE_STILL0 = '{ border: 1px solid blue; }'
+TL_SCREEN_STYLE_RECORDING = '{ border: 1px solid red; }'
+TL_SCREEN_STYLE_DORMANT = '{ border: 1px solid green; }'
 
 MOUSE_POS_COLOR = Qt.yellow
 MOUSE_POS_FONT = 'Courier'
@@ -29,6 +34,13 @@ ARROW_ACTIVATED_COLOR = Qt.green
 ARROW_HEAD_ANGLE = 20 * np.pi/180.
 ARROW_HEAD_LENGTH = 15.
 ARROW_SHAFT_WIDTH = 3
+
+TL_TITLE_COLOR_RECORDING = Qt.green
+TL_TITLE_COLOR_DORMANT = Qt.red
+TL_TITLE_FONT = 'Arial'
+TL_TITLE_FONTSIZE = 12
+TL_TITLE_X = 2
+TL_TITLE_Y = 15
 
 CAP_TITLE_COLOR_LIVE = Qt.green
 CAP_TITLE_COLOR_STILL = Qt.red
@@ -129,19 +141,80 @@ def poly2mask(qpoly, shape):
     return grid
 
 
-class CapScreen(QtWidgets.QLabel):
+class TimeLapseScreen(QtWidgets.QLabel):
     """
     A class for manaing the capture screen/pallette.
     """
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.tl_title = 'not recording'
+        self.tl_loaded = False
+        self.tl_title_color = Qt.blue
+
+        self.setObjectName(TL_SCREEN_TAG)
+        self._set_frame(TL_SCREEN_STYLE_STILL0)
+
+    def _set_frame(self, style):
+        """
+        Helper function for quick frame changes
+        """
+
+        tag = self.objectName()
+        self.setStyleSheet('#' + tag + style)
+
+    def format(self, record):
+
+        """
+        Set the frame border and text color for this screen to indicate recording or stopped
+        Returns
+        -------
+        none
+        """
+        if record:
+            self._set_frame(TL_SCREEN_STYLE_RECORDING)
+            self.cap_title_color = TL_TITLE_COLOR_RECORDING
+        else:
+            self._set_frame(TL_SCREEN_STYLE_DORMANT)
+            self.cap_title_color = TL_TITLE_COLOR_DORMANT
+
+
+    def paintEvent(self, event):
+        super().paintEvent(event)
+
+        painter = QtGui.QPainter()
+        painter.begin(self)
+
+        painter.setPen(self.tl_title_color)
+        painter.setFont(QtGui.QFont(TL_TITLE_FONT, TL_TITLE_FONTSIZE))
+        painter.drawText(TL_TITLE_X, TL_TITLE_Y, self.tl_title)
+
+        painter.end()
+
+class CapScreen(QtWidgets.QLabel):
+    """
+    A class for manaing the capture screen/pallette.
+    """
+
+    def __init__(self, size, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.cap_size = size
+        self.reset()
+        self.setObjectName(CAP_SCREEN_TAG)
+
+
+    def reset(self):
         self.cap_title = 'No Stills'
         self.cap_loaded = False
         self.cap_title_color = Qt.blue
-
-        self.setObjectName(CAP_SCREEN_TAG)
         self._set_frame(CAP_SCREEN_STYLE_STILL0)
+        gray = np.ndarray(self.cap_size, dtype=np.uint8)
+        gray.fill(180)
+        im = QtGui.QImage(gray.data, gray.shape[1], gray.shape[0], QtGui.QImage.Format_Indexed8)
+        pix = QtGui.QPixmap.fromImage(im)
+        self.setPixmap(pix)
+
 
     def _set_frame(self, style):
         """
@@ -228,7 +301,7 @@ class LiveScreen(QtWidgets.QLabel):
 
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, size, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.roi_button = None
@@ -253,6 +326,12 @@ class LiveScreen(QtWidgets.QLabel):
 
         self.setObjectName(LIVE_SCREEN_TAG)
         self._set_frame(LIVE_SCREEN_STYLE_LIVE)
+
+        gray = np.ndarray(size, dtype=np.uint8)
+        gray.fill(100)
+        im = QtGui.QImage(gray.data, gray.shape[1], gray.shape[0], QtGui.QImage.Format_Indexed8)
+        pix = QtGui.QPixmap.fromImage(im)
+        self.setPixmap(pix)
 
     def _set_frame(self, style):
         """

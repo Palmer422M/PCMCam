@@ -31,6 +31,14 @@ Configuration options in the ``[Options]`` section:
 +-----------------+-------------+-------------------------------------------------------------------+
 | CalAutoLoad     | True        | set to cause FFC files to be automatically loaded on program start|
 +-----------------+-------------+-------------------------------------------------------------------+
-| CalAutoSave     | True        | set to cause FFC files to be automatically saved after cal        |
+| CalAutoSave     | True        | set to cause FFC files to be automatically saved when reacquired  |
++-----------------+-------------+-------------------------------------------------------------------+
+| BlackCorrect    | True        | enable on-the-fly black flat-field correction                     |
++-----------------+-------------+-------------------------------------------------------------------+
+| TiffSeqXWindow  | 1024        | Horizontal window size for Tiff Stack captures                    |
++-----------------+-------------+-------------------------------------------------------------------+
+| TiffSeqYWindow  | 1024        | Vertical window size for Tiff Stack captures                      |
++-----------------+-------------+-------------------------------------------------------------------+
+| TiffSeqRebin    | 2           | Rebinning factor for Tiff Stack captures 2 = 2x2, 4 = 4x4         |
 +-----------------+-------------+-------------------------------------------------------------------+
 

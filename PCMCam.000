@@ -6,9 +6,12 @@ FlatFieldCalDir = ${UserHome}\${ProgramName}\FFC
 ImageDir = ${UserHome}\${ProgramName}\images
 
 [Options]
-CaptureAutoSave = True
 SoundOnCapture = True
 ExpInit1 = 50
 ExpInit2 = 1000
 CalAutoLoad = True
 CalAutoSave = True
+BlackCorrect = False
+TiffSeqRebin = 2
+TiffSeqXWindow = 1024
+TiffSeqYWindow = 1024

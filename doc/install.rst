@@ -9,7 +9,7 @@ Download and setup a Python 3 system from the `Anaconda`_ website.
 
 .. _Anaconda: https://www.continuum.io/downloads
 
-Follow the steps provided by Continuum to install Python 3.5 for Windows, either 64-bit or 32-bit depending on your OS.
+Follow the steps provided by Continuum to install Python 3.6 for Windows, either 64-bit or 32-bit depending on your OS.
 
 Installing Dependent Packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -28,7 +28,7 @@ The appropriate driver must be installed.
 
 Thorlabs DCx (IDS XXX)
 ^^^^^^^^^^^^^^^^^^^^^^
-Do not install the driver from Thorlabs - it's out of date and not compatible with Python 3.5.  If the Thorlabs
+Do not install the driver from Thorlabs - it's out of date and not compatible with Python 3.6.  If the Thorlabs
 software has already been installed, uninstall it using *Programs and Features* in the Windows
 *control panel*.
 
@@ -44,7 +44,7 @@ The following versions are known to work correctly
 +------------+--------+
 |Anaconda    | 4.1.0  |
 +------------+--------+
-|Python      | 3.5.1  |
+|Python      | 3.6.3  |
 +------------+--------+
 |ueye driver | 4.80.5 |
 +------------+--------+

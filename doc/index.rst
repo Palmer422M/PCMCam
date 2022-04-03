@@ -16,6 +16,7 @@ Features include:
 * Single keystroke capture to internal palette and disk ("C" key)
 * Rapid swapping of live screen and stills ("S" key)
 * Two independent exposure settings intended to be associated with bright-field/NIR and fluorescence respectively.
+* Time-lapse recording
 
 Getting Started
 ---------------

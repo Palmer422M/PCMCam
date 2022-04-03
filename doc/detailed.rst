@@ -20,6 +20,8 @@ The program will respond to certain keyboard entries as follows:
 +------------+--------------------------------------------------+
 | ``C``      | Capture frame and store to the capture palette.  |
 +------------+--------------------------------------------------+
+| ``R``      | Start or stop recording.                         |
++------------+--------------------------------------------------+
 | ``S``      | Swap role of live and captured screens.          |
 +------------+--------------------------------------------------+
 | ``T``      | Toggle exposure groups.                          |
@@ -80,24 +82,28 @@ the exposure time for a better signal to noise ratio.
 |               | the ROI                                                           |
 +---------------+-------------------------------------------------------------------+
 
-Exposure Controls
-^^^^^^^^^^^^^^^^^
+Exposure/Inter-Frame Interval (IFI) Controls
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 |exposure_controls|
 
-+---------------+-------------------------------------------------------------------+
-| Control       | Function                                                          |
-+===============+===================================================================+
-| |g_bright|    | select exposure group 1 - Bright/NIR - and exposure time (ms)     |
-+---------------+-------------------------------------------------------------------+
-| |g_fluor|     | select exposure group 2 - Fluorescence - and exposure time (ms)   |
-+---------------+-------------------------------------------------------------------+
-| |b_cal|       | start flat-field calibration                                      |
-+---------------+-------------------------------------------------------------------+
++---------------+------------------------------------------------------------------------+
+| Control       | Function                                                               |
++===============+========================================================================+
+| |g_bright|    | select exposure group 1 - Bright/NIR - exposure time (ms) and IFI (s)  |
++---------------+------------------------------------------------------------------------+
+| |g_fluor|     | select exposure group 2 - Fluorescence - exposure time (ms) and IFI (s)|
++---------------+------------------------------------------------------------------------+
+| |b_cal|       | start flat-field calibration                                           |
++---------------+------------------------------------------------------------------------+
 
 One of the two exposure groups is active at a time.  Selecting one deactivates the other. Each exposure group is
 associated with an exposure duration that's selected from a drop-down list of possible exposure settings.  The
 exposure group is also associated with the contrast/brightness settings so when toggling between groups, the
 contrast/brightness will also be retained.
+
+Inter-frame interval is controlled by the second drop-down in each group.  A non-zero inter-frame interval
+creates a longer gap between frames.  A non-zero inter-frame interval must be selected to activate time-lapse
+recording.
 
 Flat-field calibration is performed while no illumination is present.  The software will cycle through all the
 selectable exposure settings and record a black image.  This dark-field correction will be subtracted from
@@ -106,7 +112,8 @@ enabled) when the program starts up.
 
 Relationship Between Exposure Time and Frame Rate
 .................................................
-The camera frame rate cannot be higher than the inverse of the exposure time.  So, for example, if the exposure time
+With the inter-frame interval time set to zero, the frame rate is determined by the software.  The camera
+frame rate cannot be higher than the inverse of the exposure time.  So, for example, if the exposure time
 is 400 ms, the frame rate will be at most 2.5 FPS.  There is also a limit imposed by the software of (currently) 5
 frames per second so reducing the exposure time below 200 ms doesn't increase the frame rate.
 
@@ -118,20 +125,26 @@ Capture Palette
 +---------------+-------------------------------------------------------------------+
 | Control       | Function                                                          |
 +===============+===================================================================+
+| group <hms>   | capture palette tag name derived from the creation time           |
++---------------+-------------------------------------------------------------------+
+| |b_reset|     | reset palette by clearing images and creating a new group tag     |
++---------------+-------------------------------------------------------------------+
 | slider        | page through stack of captured frames                             |
 +---------------+-------------------------------------------------------------------+
 | |b_capture|   | capture the current frame                                         |
 +---------------+-------------------------------------------------------------------+
 | |b_swap|      | swap the roles of the main and capture palette screens            |
 +---------------+-------------------------------------------------------------------+
+| |b_record|    | start or stop recording frames to capture palette                 |
++---------------+-------------------------------------------------------------------+
 
 The capture palette keeps track of captured frames.  Add a new frame by pressing the |b_capture| button or ``C`` on
-the keyboard.  You can scroll through the stack (deck) of captured frames using the slider control.
+the keyboard.  Add time-lapse recordings to the palette by pressing the |b_record| button or ``R`` on
+the keyboard. Scroll through the stack (deck) of captured frames using the slider control.
 
-Captured frames are also saved (if enabled) to image files in a folder.  The format of stored captured frames is
-16-bit gray-scale TIFF.  Files are stored in the capture directory in a folder named for the date and a filename
-consisting of the program invocation time and the capture number.  That capture number corresponds to the capture
-number showing on the heading of the capture palette.
+Captured frames are saved to image files in a folder whose name corresponds to the group
+name (i.e. the palette creation time as HHMMSS). Individual frames are named sequentially.
+The format of stored captured frames is 16-bit gray-scale TIFF.
 
 .. |exposure_controls| image:: graphics/exposure_controls.png
 .. |contrast_brightness| image:: graphics/contrast_brightness.png
@@ -147,4 +160,6 @@ number showing on the heading of the capture palette.
 .. |b_cal| image:: graphics/b_cal.png
 .. |b_capture| image:: graphics/b_capture.png
 .. |b_swap| image:: graphics/b_swap.png
+.. |b_record| image:: graphics/b_record.png
+
 
